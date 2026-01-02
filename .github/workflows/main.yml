@@ -1,4 +1,4 @@
-name: C/C++ CI
+name: Build ROS workspace
 
 on:
   push:
@@ -9,15 +9,12 @@ on:
 jobs:
   build:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+
+    container:
+      image: ros:humble-ros-base
 
     steps:
     - uses: actions/checkout@v4
-    - name: configure
-      run: ./configure
-    - name: make
-      run: make
-    - name: make check
-      run: make check
-    - name: make distcheck
-      run: make distcheck
+    - name: build ros
+      run: ./scripts/build-ros.sh
