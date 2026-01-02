@@ -6,8 +6,8 @@ from std_msgs.msg import String
 class SimplePublisher(Node):
 
     def __init__(self, name:str):
-        super().__init__()
-        self.pub_ = self.create_publisher(String, "simple_publisher", 10)
+        super().__init__(name)
+        self.pub_ = self.create_publisher(String, "chatter", 10)
         self.counter_ = 0
         self.frequency_ = 1.0
         self.get_logger().info("Publishing at %d Hz" % self.frequency_)
