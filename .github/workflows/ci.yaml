@@ -7,8 +7,48 @@ on:
     branches: ["main"]
 
 jobs:
-  analysis:
-    uses: ./.github/workflows/analysis.yaml
+  build:
+    name: Build ROS workspace
+    runs-on: ubuntu-22.04
 
-  main:
-    uses: ./.github/workflows/main.yaml
+    container:
+      image: ros:humble-ros-base
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x scripts/build-ros.sh
+
+      - name: Build ros
+        run: ./scripts/build-ros.sh
+
+  ruff:
+    name: Ruff
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - run: pip install ruff
+      - run: ruff check $(git ls-files '*.py')
+
+  mypy:
+    name: MyPy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - run: pip install mypy
+      - run: mypy $(git ls-files '*.py') --config-file .mypy.ini
