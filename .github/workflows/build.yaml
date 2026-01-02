@@ -1,0 +1,24 @@
+name: Build
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  build:
+    name: Build ROS workspace
+    runs-on: ubuntu-22.04
+
+    container:
+      image: ros:humble-ros-base
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Make script executable
+        run: chmod +x scripts/build-ros.sh
+
+      - name: Build ros
+        run: ./scripts/build-ros.sh
