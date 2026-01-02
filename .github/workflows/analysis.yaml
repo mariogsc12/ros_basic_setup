@@ -1,7 +1,12 @@
 name: Analysis
 
 on:
-  workflow_call:
+  push:
+      branches: [ "main" ]
+      paths:
+          - "**/*.py"
+  pull_request:
+      branches: [ "main" ]
   
 
 jobs:
