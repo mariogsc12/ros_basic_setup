@@ -14,4 +14,4 @@ public:
   SimplePublisher(const std::string &name);
 };
 
-#endif // SIMPLE_PUBLISHER_HPP
+#endif //  SIMPLE_PUBLISHER_HPP
