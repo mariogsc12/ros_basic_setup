@@ -7,7 +7,7 @@ class SimplePublisher(Node):
 
     def __init__(self, name:str):
         super().__init__(name)
-        self.pub_ = self.create_publisher(String, "chatter", 10)
+        self.pub_ = self.create_publisher(String, "pub", 10)
         self.counter_ = 0
         self.frequency_ = 1.0
         self.get_logger().info("Publishing at %d Hz" % self.frequency_)

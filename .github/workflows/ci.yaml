@@ -1,0 +1,14 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  analysis:
+    uses: ./.github/workflows/analysis.yaml
+
+  main:
+    uses: ./.github/workflows/main.yaml
