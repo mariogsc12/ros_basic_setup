@@ -16,5 +16,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: build ros
+
+    - name: Make script executable
+      run: chmod +x scripts/build-ros.sh
+
+    - name: Build ros
       run: ./scripts/build-ros.sh
