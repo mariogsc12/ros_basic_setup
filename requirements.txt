@@ -1,3 +1,4 @@
 # Linters
 ruff
 mypy
+pre-commit
