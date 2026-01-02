@@ -1,7 +1,7 @@
 name: Analysis
 
 on:
-  workflow_dispatch:
+  workflow_call:
   
 
 jobs:
