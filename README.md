@@ -67,7 +67,9 @@ git clone <repo-url>
 cd ros_basic_setup
 # Install Python dependencies
 pip install -r requirements.txt
-# Build the ROS 2 workspace
+# Install Pre-commit hooks
+pre-commit install
+# (Optional) Build the ROS 2 workspace
 ./scripts/build-ros.sh
 ``` 
 
